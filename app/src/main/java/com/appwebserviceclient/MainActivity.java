@@ -1,27 +1,21 @@
 package com.appwebserviceclient;
 
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -147,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //finaliza conexão
                 connection.disconnect();
 
-                //como utilizar esse retorno?
+                //como utilizar esse retorno
                 return listDiscentes;
 
 
@@ -281,8 +275,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //define a mensagem
                 builder.setMessage("Confirma a exclusão do discente " + relacaoDiscentes.get(selecionado).toString() + "?");
 
-                //define um botão como positivo
-                builder.setPositiveButton("Positivo", new DialogInterface.OnClickListener() {
+                //define um botão para confirmar
+                builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         //defini que tem aluno para excluir
                         excluirDiscente = true;
@@ -291,21 +285,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         atualizaListaDiscentes();
                     }
                 });
-                //define um botão como negativo.
-                builder.setNegativeButton("Negativo", new DialogInterface.OnClickListener() {
+                //define um botão para cancelar
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
 
                     }
                 });
 
-                //cria o AlertDialog
+                //Cria e exibe o AlertDialog
                 alerta = builder.create();
-                //Exibe
                 alerta.show();
 
             }
             else
-                Toast.makeText(getBaseContext(), "Clique sobre o discente que quer editar.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Clique sobre o discente que quer excluir.", Toast.LENGTH_SHORT).show();
         }
         else if (view == btAtualizar){
             this.atualizaListaDiscentes();

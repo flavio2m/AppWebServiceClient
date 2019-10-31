@@ -4,57 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_weight="9"
+        android:listSelector="@color/colorSecunday">
+
+    </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="129dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <ListView
-            android:id="@+id/lista"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <Button
+            android:id="@+id/btAtualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:listSelector="@color/colorSecunday">
+            android:text="Atualizar" />
 
-        </ListView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
+        <Button
+            android:id="@+id/btNovo"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:text="Novo" />
 
-            <Button
-                android:id="@+id/btAtualizar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Atualizar" />
+        <Button
+            android:id="@+id/btEditar"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editar" />
 
-            <Button
-                android:id="@+id/btNovo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Novo" />
-
-            <Button
-                android:id="@+id/btEditar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Editar" />
-
-            <Button
-                android:id="@+id/btExcluir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Excluir" />
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/btExcluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Excluir" />
     </LinearLayout>
 
 </LinearLayout>

@@ -28,7 +28,7 @@
 
         <EditText
             android:id="@+id/tid"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
@@ -50,7 +50,7 @@
 
         <EditText
             android:id="@+id/tnumero"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
@@ -72,7 +72,7 @@
 
         <EditText
             android:id="@+id/tnome"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
             android:layout_column="1"
@@ -93,7 +93,7 @@
 
         <EditText
             android:id="@+id/temail"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
             android:layout_column="1"
@@ -116,7 +116,7 @@
 
         <EditText
             android:id="@+id/tcurso"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="4"
             android:layout_column="1"
@@ -136,7 +136,7 @@
 
         <EditText
             android:id="@+id/tano"
-            android:layout_width="336dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="1"

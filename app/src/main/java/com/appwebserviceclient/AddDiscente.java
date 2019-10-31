@@ -12,13 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.BufferedReader;
+
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
-import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 /*
  * Created by flavio2m@gmail.com on 01/10/2019
@@ -61,12 +62,12 @@ public class AddDiscente extends AppCompatActivity implements View.OnClickListen
                 discente.setCurso(tCurso.getText().toString());
                 discente.setNumero(tNumero.getText().toString());
 
-                if(novoDiscente)
+                if (novoDiscente)
                     new UploadJsonAsyncTask().execute(endServidor);
-                else{
+                else {
                     //define o id (já possui cadastro)
                     discente.setId(Integer.parseInt(tId.getText().toString()));
-                    new UploadJsonAsyncTask().execute(endServidor+ discente.getId() + "/");
+                    new UploadJsonAsyncTask().execute(endServidor + discente.getId() + "/");
                 }
 
                 Intent t = new Intent(getBaseContext(), MainActivity.class);
@@ -94,8 +95,7 @@ public class AddDiscente extends AppCompatActivity implements View.OnClickListen
             this.tNumero.setText(params.getString("numero"));
             this.tCurso.setText(params.getString("curso"));
             this.tAno.setText(params.getString("ano"));
-        }
-        else
+        } else
             this.novoDiscente = true;
 
     }
@@ -120,20 +120,26 @@ public class AddDiscente extends AppCompatActivity implements View.OnClickListen
         protected ArrayList<Discente> doInBackground(String... params) {
             //params[0] é o parâmetro String da classe
             String urlString = params[0];
+            String requestMetohdo;
+
             try {
+                if (novoDiscente){
+                    requestMetohdo = "POST";
+                }
+                else {
+                    requestMetohdo = "PUT";
+                }
+
+                System.out.println(urlString);
+
                 URL url = new URL(urlString);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                if (novoDiscente)
-                    connection.setRequestMethod("POST");
-                else
-                    connection.setRequestMethod("PATCH");
+                connection.setRequestMethod(requestMetohdo);
                 connection.setRequestProperty("Content-Type", "application/json");
                 connection.setRequestProperty("Accept-Charset", "UTF-8");
-                connection.setDoOutput(true);
-                connection.setDoInput(true);
                 connection.connect();
 
-                JSONObject jsonObject= new JSONObject();
+                JSONObject jsonObject = new JSONObject();
                 jsonObject.put("nome", discente.getNome());
                 jsonObject.put("email", discente.getEmail());
                 jsonObject.put("numero", discente.getNumero());
@@ -146,22 +152,23 @@ public class AddDiscente extends AppCompatActivity implements View.OnClickListen
 
                 System.out.println(jsonObject.toString());
 
-                DataOutputStream os = new DataOutputStream(connection.getOutputStream());
-                os.writeBytes(String.valueOf(jsonObject));
-                os.flush();
+                OutputStream os = connection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                writer.write(String.valueOf(jsonObject));
+                writer.flush();
+                writer.close();
                 os.close();
 
                 //Verifica a resposta do webservice
                 //200 OK = atualizado com sucesso
                 //201 Created = cadastrado com sucesso
                 int responseCode = connection.getResponseCode();
-                System.out.println(responseCode);
-                if (responseCode == 201)
-                    msgRetorno = "Discente atualizado com sucesso!";
-                else if(responseCode == 200)
-                    msgRetorno = "Discente cadastrado com sucesso!";
+                if (responseCode == 200 || responseCode == 201)
+                    msgRetorno = "Cadastro realizado com sucesso!";
                 else
                     msgRetorno = "Erro ao enviar dados para o servidor: " + responseCode;
+
+                System.out.println(msgRetorno);
 
                 //fecha conexão
                 connection.disconnect();
