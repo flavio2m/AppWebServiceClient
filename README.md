@@ -8,7 +8,7 @@ Matheus Brandino "Facilitando as requisições utilizando OkHttp no Android" <ht
 
 Monise Costa "Receber dados via JSON em um aplicativo Android" <http://www.matera.com/blog/post/receber-dados-via-json-em-um-aplicativo-android>
 
-Trabalhando com AsyncTask no Android <https://www.devmedia.com.br/trabalhando-com-asynctask-no-android/33481>
+Allan, Trabalhando com AsyncTask no Android <https://www.devmedia.com.br/trabalhando-com-asynctask-no-android/33481>
 
 Códigos de status de respostas HTTP <https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status>
 
