@@ -1,6 +1,6 @@
 # AppWebServiceClient
 
-Aplicação simples pra comunicar com WebService na arquitetura REST. 
+Aplicação simples pra comunicar com WebService na arquitetura REST, utiliza os métodos GET para recuperar, POST para criar, PUT para alterar e DELETE para apagar e serve dados no formato JSON.
 
 Para construção do projeto foram utilizados como base os artigos publicado por:
 
